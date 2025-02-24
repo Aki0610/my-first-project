@@ -1,21 +1,23 @@
+import sys
+
 import pygame
-pygame.init()
-x = 600
-y = 600
 
-scrn = pygame.display.set_mode((x,y))
+class AlienInvasion:
+    def __init__(self):
+        pygame.init()
 
-pygame.display.set_caption('image')
+        self.screen = pygame.display.set_mode((1200,800))
+        self.screen.fill('black')
+        pygame.display.set_caption("Alien Invasion")
 
-imp = pygame.image.load("C:\\Users\\Karuna\\Projects\\spaceship.png").convert_alpha()
+    def run_game(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
 
-scrn.blit(imp,(0,0))
+            pygame.display.flip()
 
-pygame.display.flip()
-status =  True
-while(status):
-    for i in pygame.event.get():
-        if i.type == pygame.QUIT:
-            status = False
-
-pygame.quit()
+if __name__ == '__main__':
+    ai = AlienInvasion()
+    ai.run_game()
